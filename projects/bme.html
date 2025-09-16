@@ -2,73 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BME Project</title>
+    <title>BME Project | Verethragna111</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
-  
-    <a href="../index.html" class="back-button">← Back to Home</a> | 
-    <a class="github-link" href="https://github.com/verethragna111/bme-project" target="_blank">View on GitHub</a>
-
 <body>
-    <div class="container">
-        <h1>Hodgkin-Huxley model run in  MATLAB and CUDA</h1>
-        <p>
-            This project commenced because I participated in a pilot course in my University. 
-            This course was focused on ITM students developing projects and systems alongside BME students. 
-            The aim of this project was to develop a learning platform for BME students to study and practice developing software with a focus on scalability, maintainability and upgradability. 
-            For ITM students, the goal was to get hands-on experience developing programs for BME purposes. Also, to start learning how to develop CUDA kernels for computing optimization.  
-        </p>
 
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
 
-        <h2>Design of the system</h2>
-        <p>
-            The software follows a modular design. Each component is structured into separate files that handle specific responsibilities. 
-            Modularity allows a clear separation between the user interface, backend, utility functions and GPU optimization.
-        </p>
-        <div class="images">
-            <img src="../images/BME/BME-design.png" alt="System Design" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=Image+Not+Found';">
+    <header class="project-header">
+        <h1>Hodgkin-Huxley Model with MATLAB and CUDA</h1>
+        <div class="nav-links">
+            <a href="../index.html">← Back to Home</a> | 
+            <a href="https://github.com/verethragna111/BME-Educational-Software" target="_blank">View on GitHub</a>
         </div>
+    </header>
+
+    <main class="container">
+        <section class="project-section">
+            <h2>Project Overview</h2>
+            <p>
+                This project commenced because I participated in a pilot course in my University. This course was focused on ITM students developing projects and systems alongside BME students. The aim of this project was to develop a learning platform for BME students to study and practice developing software with a focus on scalability, maintainability and upgradability. For ITM students, the goal was to get hands-on experience developing programs for BME purposes. Also, to start learning how to develop CUDA kernels for computing optimization.
+            </p>
+        </section>
+
+        <section class="project-section">
+            <h2>System Design</h2>
+            <p>
+                The software follows a modular design. Each component is structured into separate files that handle specific responsibilities. Modularity allows a clear separation between the user interface, backend, utility functions and GPU optimization.
+            <div class="images">
+                <img src="../images/BME/BME-design.png" alt="System Design">
+            </div>
+        </section>
         
-        <h2>GPU paralelization in MATLAB</h2>
-        <p>
-            MATLAB supports GPU acceleration using NVIDIA graphics cards. This can be achieved either through high-level parallelization using special data types like gpuArray, or through low-level GPU programming using custom CUDA kernels via MEX interfaces. In this software, we leverage low-level GPU parallelization using NVIDIA CUDA. This requires a CUDA compatible hardware and the installation of the NVIDIA CUDA toolkit [https://developer.nvidia.com/cuda-toolkit]
-        </p>
+        <section class="project-section">
+            <h2>GPU Acceleration in MATLAB</h2>
+            <p>
+                MATLAB's capabilities can be extended with GPU acceleration using NVIDIA graphics cards. This can be done through high-level functions with `gpuArray` or by integrating custom CUDA kernels via MEX interfaces for low-level control. In this project, we opted for the low-level approach with NVIDIA CUDA to maximize performance, which requires a CUDA-compatible GPU and the NVIDIA CUDA Toolkit.
+            </p>
+        </section>
 
-        <h2>Voltage Experiment, GPU paralelization with CUDA</h2>
-        <p>
-            We have made the GPU module for the Voltage experiment. This is called ‘voltage_kernel.cu’. To measure the performance of the code we have made a temporary backend module that uses both methods (GPU and CPU) and shows the running time.The structure of this cuda code is:
-                Device functions: To substitute the support functions. These are here so that the Kernel can calculate them since it can not call for the Matlab functions declared in the ‘Support_Function’ Module.
+        <section class="project-section">
+            <h2>CUDA Implementation for the Voltage Experiment</h2>
+            <p>
+                The GPU module was specifically developed for the Voltage experiment and is encapsulated in ‘voltage_kernel.cu’. To benchmark performance, we created a temporary backend to compare the execution time of the GPU-accelerated code against the CPU-based implementation. The CUDA code is structured as follows:
+            </p>
+            <h3>Device Functions</h3>
+            <p>
+                These functions are executed on the GPU and replace the standard MATLAB support functions, allowing the kernel to perform calculations independently.
+            </p>
+            <div class="images">
+                <img src="../images/BME/BME-device.png" alt="Device Functions">
+            </div>
 
-        </p>
+            <h3>Kernel Code</h3>
+            <p>
+                The kernel is the core of the GPU code, replacing the main processing loop to enable parallel execution on the GPU.
+            </p>
+            <div class="images">
+                <img src="../images/BME/BME-Kernel.png" alt="Kernel Code">
+            </div>
 
-        <div class="images">
-            <img src="../images/BME/BME-device.png" alt="Device Functions" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=Image+Not+Found';">
-        </div>
+            <h3>MEX Wrapper</h3>
+            <p>
+                The MEX wrapper integrates the CUDA code into a MATLAB-callable function. It manages memory allocation on the GPU, sets up the execution grid and block sizes, and handles data transfer between the GPU and the MATLAB environment.
+            </p>
+            <div class="images">
+                <img src="../images/BME/BME-MexCUDA.png" alt="MEX Wrapper">
+            </div>
+        </section>
+    </main>
 
-        <p>
-            Kernel Code: This is the code that substitutes the for loop to execute it in the GPU through the use of CUDA.   
-        </p>
+    <footer>
+        <p>&copy; 2025 Verethragna111</p>
+    </footer>
 
-        <div class="images">
-            <img src="../images/BME/BME-Kernel.png" alt="Kernel Code" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=Image+Not+Found';">
-        </div>
-
-        <p>
-            Mex wrapper: This is the part of the code that wraps the CUDA code into a usable Matlab function. It calculates the initial variables and prepares the resource allocation for the code in the GPU (Block size, grid, etc..). It also handles the memory interaction between the GPU and the Matlab program.
-        </p>
-
-        <div class="images">
-            <img src="../images/BME/BME-MexCUDA.png" alt="Kernel Code" onerror="this.onerror=null;this.src='https://via.placeholder.com/400x300?text=Image+Not+Found';">
-        </div>
-
-
-
-
-
-        
-
-    </div>
 </body>
-
 </html>
