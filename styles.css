@@ -2,12 +2,12 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f4f4f4;
-    color: #222;
+    background: #181a1b; /* Dark background */
+    color: #e0e0e0;      /* Light text */
 }
 
 header {
-    background: #222;
+    background: #111317; /* Even darker header */
     color: #fff;
     padding: 1rem 0;
     text-align: center;
@@ -35,15 +35,16 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
+    color: #1e90ff; /* Accent color on hover */
 }
 
 main {
     max-width: 800px;
     margin: 2rem auto;
     padding: 0 1rem;
-    background: #fff;
+    background: #23272a; /* Dark card background */
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
 section {
@@ -57,10 +58,10 @@ section {
 }
 
 .project {
-    background: #f9f9f9;
+    background: #23272a; /* Match main background */
     padding: 1rem;
     border-radius: 6px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
 
 .project h3 {
@@ -70,9 +71,17 @@ section {
 footer {
     text-align: center;
     padding: 1rem 0;
-    background: #222;
-    color: #fff;
+    background: #111317;
+    color: #aaa;
     position: fixed;
     width: 100%;
     bottom: 0;
+}
+
+/* Optional: style links for better contrast */
+a {
+    color: #4aa3ff;
+}
+a:hover {
+    color: #1e90ff;
 }
